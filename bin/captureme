@@ -1,1 +1,33 @@
 #!/usr/bin/env node
+
+/**
+ * Dependencies.
+ */
+
+var wd = require('wd');
+var fs = require('fs');
+var env = process.env;
+
+var user = env.SAUCE_USERNAME;
+var key = env.SAUCE_ACCESS_KEY;
+var driver = wd.remote('ondemand.saucelabs.com', 80, user, key);
+
+var platform = 'winxp';
+var browser = 'internet explorer';
+var opts = { browserName: browser };
+var url = 'http://sportal.bg';
+
+opts.platform = platform;
+
+driver.init(opts, function(err, browser) {
+  if (err) throw err;
+
+  driver.get(url, function(err) {
+    if (err) throw err;
+
+    driver.takeScreenshot(function(err, data) {
+      fs.writeFileSync('/Users/vesln/Desktop/' + 'out1.png', data, 'base64');
+      process.exit(0);
+    });
+  });
+});
