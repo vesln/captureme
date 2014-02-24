@@ -6,27 +6,45 @@
 
 var wd = require('wd');
 var fs = require('fs');
+var config = require('../browsers');
 var env = process.env;
+
+/**
+ * Credentials.
+ */
 
 var user = env.SAUCE_USERNAME;
 var key = env.SAUCE_ACCESS_KEY;
+
+/**
+ * Input.
+ */
+
+var url = 'http://vesln.com';
+var browser = config['ie11'];
+
 var driver = wd.remote('ondemand.saucelabs.com', 80, user, key);
 
-var platform = 'winxp';
-var browser = 'internet explorer';
-var opts = { browserName: browser };
-var url = 'http://sportal.bg';
+var opts = {
+  browserName: browser.name,
+  platform: browser.platform,
+  version: browser.version
+};
 
-opts.platform = platform;
+function capture(name) {
+  driver.takeScreenshot(function(err, data) {
+    if (err) throw err;
+    fs.writeFileSync('/Users/vesln/Desktop/' + name, data, 'base64');
+  });
+}
 
-driver.init(opts, function(err, browser) {
+driver.init(opts, function(err) {
   if (err) throw err;
 
   driver.get(url, function(err) {
     if (err) throw err;
 
-    driver.takeScreenshot(function(err, data) {
-      fs.writeFileSync('/Users/vesln/Desktop/' + 'out1.png', data, 'base64');
+    capture('out1.png', function() {
       process.exit(0);
     });
   });

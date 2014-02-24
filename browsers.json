@@ -1,0 +1,32 @@
+{
+  "ie6": {
+    "name": "internet explorer",
+    "platform": "Windows XP",
+    "version": "6"
+  },
+  "ie7": {
+    "name": "internet explorer",
+    "platform": "Windows XP",
+    "version": "7"
+  },
+  "ie8": {
+    "name": "internet explorer",
+    "platform": "Windows 7",
+    "version": "8"
+  },
+  "ie9": {
+    "name": "internet explorer",
+    "platform": "Windows 7",
+    "version": "9"
+  },
+  "ie10": {
+    "name": "internet explorer",
+    "platform": "Windows 8",
+    "version": "10"
+  },
+  "ie11": {
+    "name": "internet explorer",
+    "platform": "Windows 8.1",
+    "version": "11"
+  }
+}
