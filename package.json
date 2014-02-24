@@ -1,0 +1,20 @@
+{
+  "name": "captrueme",
+  "version": "0.0.0",
+  "description": "",
+  "author": "Veselin Todorov <hi@vesln.com>",
+  "license": "MIT",
+  "main": "./index.js",
+  "homepage": "https://github.com/vesln/captureme",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vesln/captureme"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "wd": "~0.2.10"
+  }
+}
