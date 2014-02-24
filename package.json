@@ -1,11 +1,15 @@
 {
   "name": "captrueme",
   "version": "0.0.0",
+  "preferGlobal": true,
   "description": "",
   "author": "Veselin Todorov <hi@vesln.com>",
   "license": "MIT",
   "main": "./index.js",
   "homepage": "https://github.com/vesln/captureme",
+  "bin": {
+    "captureme": "./bin/captureme",
+  },
   "scripts": {
     "test": "make test"
   },
