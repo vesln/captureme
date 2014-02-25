@@ -6,11 +6,11 @@
 
 var wd = require('wd');
 var fs = require('fs');
-var config = require('../browsers');
 var argv = require('argvee')();
 var debug = require('sherlock')('captureme');
 var Batch = require('batch');
 var path = require('path');
+var _ = require('../util');
 var env = process.env;
 
 /**
@@ -25,15 +25,20 @@ var key = env.SAUCE_ACCESS_KEY;
  */
 
 var url = (argv.param('url') || [])[0];
-var browsers = parseBrowsers(argv.param('browsers'));
 var dest = (argv.param('dest') || [ path.resolve('.') ])[0];
+
+try {
+  var browsers = _.parseBrowsers(argv.param('browsers'));
+} catch(e) {
+  _.error(e.message);
+}
 
 /**
  * Validate input.
  */
 
-if (!url) error('`--url` is missing');
-if (!browsers.length) error('`--browsers` is missing');
+if (!url) _.error('`--url` is missing');
+if (!browsers.length) _.error('`--browsers` is missing');
 
 var batch = new Batch;
 
@@ -55,7 +60,7 @@ browsers.forEach(function(browser) {
 
         driver.takeScreenshot(function(err, data) {
           if (err) return done(err);
-          fs.writeFile(filePath(dest, browser.alias, url), data, 'base64', done);
+          fs.writeFile(_.filePath(dest, browser.alias, url), data, 'base64', done);
         });
       });
     });
@@ -66,28 +71,3 @@ batch.end(function(err) {
   if (err) throw err;
   process.exit(0);
 });
-
-function error(msg) {
-  console.error(msg);
-  process.exit(1);
-}
-
-function filename(url, ext) {
-  ext = ext || '.png';
-  return url.replace(/\W+/g, '_') + '.' + ext;
-}
-
-function filePath(dir, alias, url) {
-  return path.join(dir, alias + '_' + url.replace(/\W+/g, '_') + '.png');
-}
-
-function parseBrowsers(input) {
-  input = (input || [])[0];
-
-  return input.split(',').map(function(alias) {
-    var entry = config[alias];
-    if (!entry) error('invalid browser alias: ' + alias);
-    entry.alias = alias;
-    return entry;
-  });
-}
