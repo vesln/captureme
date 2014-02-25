@@ -2,10 +2,10 @@
   "name": "captureme",
   "version": "0.0.0",
   "preferGlobal": true,
-  "description": "",
+  "description": "CLI utility that helps you capture screenshots from any browser available in the cloud",
   "author": "Veselin Todorov <hi@vesln.com>",
   "license": "MIT",
-  "main": "./index.js",
+  "main": "./capturer.js",
   "homepage": "https://github.com/vesln/captureme",
   "bin": {
     "captureme": "./bin/captureme"

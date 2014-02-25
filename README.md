@@ -3,15 +3,7 @@ version](https://badge.fury.io/js/captureme.png)](http://badge.fury.io/js/captur
 
 # captureme
 
-```
-Usage: node ./bin/captureme --url [str] --browsers [str]
-
-Options:
-  --size      browser resolution, example: 640x200
-  --save      save path
-  --browsers  browser list, example: ie6,ff22,chrome32
-  --url       target
-```
+CLI utility that helps you capture screenshots from any browser available in the cloud. For more information view the [documentation](http://vesln.github.io/captureme).
 
 ## Installation
 
