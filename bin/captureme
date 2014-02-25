@@ -6,9 +6,9 @@
 
 var fs = require('fs');
 var argv = require('argvee')();
-var debug = require('sherlock')('captureme');
+var debug = require('sherlock')('captureme:cli');
 var Batch = require('batch');
-var path = require('path');
+var resolve = require('path').resolve;
 var _ = require('../util');
 var Capturer = require('../capturer');
 var env = process.env;
@@ -25,7 +25,7 @@ var key = env.SAUCE_ACCESS_KEY;
  */
 
 var url = (argv.param('url') || [])[0];
-var dest = (argv.param('dest') || [ path.resolve('.') ])[0];
+var dest = (argv.param('dest') || [ resolve('.') ])[0];
 
 try {
   var browsers = _.parseBrowsers(argv.param('browsers'));
@@ -34,14 +34,18 @@ try {
 }
 
 /**
- * Validate input.
+ * Simple input validation.
  */
 
 if (!url) _.error('`--url` is missing');
 if (!browsers.length) _.error('`--browsers` is missing');
 
+debug('user: %s', user);
+debug('url: %s', url);
+debug('browsers: %j', browsers);
+
 /**
- * Start taking screenshots.
+ * Setup the batch.
  */
 
 var batch = new Batch;
@@ -51,9 +55,15 @@ browsers.forEach(function(browser) {
     var capturer = new Capturer(user, key, browser);
     capturer.capture(url, function(err, data) {
       if (err) return done(err);
-      fs.writeFile(_.filePath(dest, browser.alias, url), data, 'base64', done);
+      var filePath = _.filePath(dest, browser.alias, url);
+      debug('store file: %s', filePath);
+      fs.writeFile(filePath, data, 'base64', done);
     });
   });
+});
+
+batch.on('progress', function(e) {
+  debug('progress: ' + e.percent + '%');
 });
 
 /**
@@ -61,6 +71,7 @@ browsers.forEach(function(browser) {
  */
 
 batch.end(function(err) {
+  debug('done');
   if (err) throw err;
   process.exit(0);
 });

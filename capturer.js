@@ -3,6 +3,7 @@
  */
 
 var wd = require('wd');
+var debug = require('sherlock')('captureme:capturer');
 
 /**
  * Screenshot capturer.
@@ -36,11 +37,15 @@ Capturer.prototype.capture = function(url, fn) {
     version: this.browser.version
   };
 
+  debug('init %s', this.browser.alias);
   driver.init(opts, function(err) {
     if (err) return fn(err);
 
+    debug('GET %s', url);
     driver.get(url, function(err) {
       if (err) return fn(err);
+
+      debug('take screenshot');
       driver.takeScreenshot(fn);
     });
   });
