@@ -1,12 +1,7 @@
 [![NPM
 version](https://badge.fury.io/js/captureme.png)](http://badge.fury.io/js/captureme)
-[![Build Status](https://secure.travis-ci.org/vesln/captureme.png)](http://travis-ci.org/vesln/captureme)
 
 # captureme
-
-WIP
-
-## Usage
 
 ```
 Usage: node ./bin/captureme --url [str] --browsers [str]
