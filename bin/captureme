@@ -4,13 +4,13 @@
  * Dependencies.
  */
 
-var wd = require('wd');
 var fs = require('fs');
 var argv = require('argvee')();
 var debug = require('sherlock')('captureme');
 var Batch = require('batch');
 var path = require('path');
 var _ = require('../util');
+var Capturer = require('../capturer');
 var env = process.env;
 
 /**
@@ -40,32 +40,25 @@ try {
 if (!url) _.error('`--url` is missing');
 if (!browsers.length) _.error('`--browsers` is missing');
 
+/**
+ * Start taking screenshots.
+ */
+
 var batch = new Batch;
 
 browsers.forEach(function(browser) {
-  var driver = wd.remote('ondemand.saucelabs.com', 80, user, key);
-
-  var opts = {
-    browserName: browser.name,
-    platform: browser.platform,
-    version: browser.version
-  };
-
   batch.push(function(done) {
-    driver.init(opts, function(err) {
+    var capturer = new Capturer(user, key, browser);
+    capturer.capture(url, function(err, data) {
       if (err) return done(err);
-
-      driver.get(url, function(err) {
-        if (err) return done(err);
-
-        driver.takeScreenshot(function(err, data) {
-          if (err) return done(err);
-          fs.writeFile(_.filePath(dest, browser.alias, url), data, 'base64', done);
-        });
-      });
+      fs.writeFile(_.filePath(dest, browser.alias, url), data, 'base64', done);
     });
   });
 });
+
+/**
+ * Done.
+ */
 
 batch.end(function(err) {
   if (err) throw err;
