@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>captureme &mdash; CLI utility that helps you capture screenshots from browsers in the cloud</title>
+<title>captureme &mdash; CLI utility that helps you capture screenshots via browsers in the cloud</title>
 <link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
@@ -11,7 +11,8 @@
 <div class="container">
   <header class="head">
     <h1 class="logo">captureme</h1>
-    <h2 class="slogan">CLI utility that helps you capture screenshots from browsers in the cloud</h1>
+    <h2 class="slogan">CLI utility that helps you capture screenshots via browsers in the cloud</h1>
+    <img alt="" class="demo" src="demo.gif" />
   </header>
 
   <section class="docs">
@@ -41,8 +42,7 @@
     <p>Using captureme is easy. All you need to do is specify a URL to capture and a list of browsers:</p>
 
     <pre>
-  $ captureme <strong>--url http://vesln.com</strong> <strong>--browsers ie8,ipad6,iphone7,ff26,chrome30</strong>
-    </pre>
+  $ captureme <strong>--url http://vesln.com</strong> <strong>--browsers ie8,ipad6,iphone7,ff26,chrome30</strong></pre>
 
     <p>You can also specify the size of the browsers: </p>
 
@@ -70,13 +70,67 @@
 
     <h3 class="doc-heading">Available aliases</h3>
 
+    <ul>
+      <li>ie6</li>
+      <li>ie7</li>
+      <li>ie8</li>
+      <li>ie9</li>
+      <li>ie10</li>
+      <li>ie11</li>
+      <li>ff20</li>
+      <li>ff21</li>
+      <li>ff22</li>
+      <li>ff23</li>
+      <li>ff24</li>
+      <li>ff25</li>
+      <li>ff26</li>
+      <li>ff27</li>
+      <li>chrome26</li>
+      <li>chrome27</li>
+      <li>chrome28</li>
+      <li>chrome29</li>
+      <li>chrome30</li>
+      <li>chrome31</li>
+      <li>chrome32</li>
+      <li>safari5</li>
+      <li>safari6</li>
+      <li>safari7</li>
+      <li>opera11</li>
+      <li>opera12</li>
+      <li>iphone5</li>
+      <li>iphone5.1</li>
+      <li>iphone6</li>
+      <li>iphone6.1</li>
+      <li>iphone7</li>
+      <li>ipad5</li>
+      <li>ipad5.1</li>
+      <li>ipad6</li>
+      <li>ipad6.1</li>
+      <li>ipad7</li>
+    </ul>
+
     <h3 class="doc-heading">Custom aliases</h3>
+
+    <p>You can override the default aliases or introduce your own by creating a JSON file in $HOME/.captureme.json. The file should be formatted like so:</p>
+
+    <pre>
+  {
+    "SOL": {
+      "name": "internet explorer",
+      "platform": "Windows XP",
+      "version": "6"
+    }
+  }</pre>
+
+    <p>See all <a href="https://saucelabs.com/platforms">available platforms</a> on SauceLabs</p>
 
     <h3 class="doc-heading">License</h3>
     <p>MIT License</p>
 
   </section>
 </div>
+
+<a href="https://github.com/vesln/captureme"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
 </body>
 </html>

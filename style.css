@@ -18,8 +18,13 @@ a {
 }
 
 .head {
+  text-align: center;
   margin-top: 80px;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
+}
+
+.demo {
+  margin-top: 40px;
 }
 
 .logo {
@@ -41,12 +46,19 @@ a {
   color: #000;
 }
 
+ul {
+  margin: 0;
+  padding: 0 0 0 30px;
+}
+
 em {
   color: #000;
 }
 
 pre {
   color: #000;
-  margin: 0;
+  margin: 30px 30px;
   padding: 0;
+  display: block;
+  line-height: 18px;
 }
