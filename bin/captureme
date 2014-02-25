@@ -14,7 +14,7 @@ var Capturer = require('../capturer');
 var env = process.env;
 
 var argv = require('optimist')
-  .usage('Usage: $0 --url [num] --browsers [str]')
+  .usage('Usage: $0 --url [str] --browsers [str]')
   .demand([ 'url' ])
   .demand([ 'browsers' ])
   .options('size', {
@@ -24,7 +24,7 @@ var argv = require('optimist')
     describe: 'save path'
   })
   .options('browsers', {
-    describe: 'browser list, example: ie6,ff22,chrome26'
+    describe: 'browser list, example: ie6,ff22,chrome32'
   })
   .options('url', {
     describe: 'target'
