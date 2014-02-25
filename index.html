@@ -4,8 +4,79 @@
 <title>captureme &mdash; CLI utility that helps you capture screenshots from browsers in the cloud</title>
 <link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,600">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
 </head>
 <body>
+
+<div class="container">
+  <header class="head">
+    <h1 class="logo">captureme</h1>
+    <h2 class="slogan">CLI utility that helps you capture screenshots from browsers in the cloud</h1>
+  </header>
+
+  <section class="docs">
+    <h3 class="doc-heading">Requirements</h3>
+
+    <ul>
+      <li>Node.js >= 0.10</li>
+      <li>npm</li>
+    </ul>
+
+    <h3 class="doc-heading">Installation</h3>
+    <p>capturme is available on npm and should be installed globally:</p>
+
+    <pre>
+  $ npm install captureme -g</pre>
+
+    <h3 class="doc-heading">Setup</h3>
+
+    <p>captureme uses <a href="https://saucelabs.com">SauceLabs</a> under the hood, so you'd need to sign up if you don't have an account yet. After that, configure the authentication credentials you'd like to use:</p>
+
+    <pre>
+  $ export SAUCE_USERNAME="user"
+  $ export SAUCE_ACCESS_KEY="key"</pre>
+
+    <h3 class="doc-heading">Capture sreenshots</h3>
+
+    <p>Using captureme is easy. All you need to do is specify a URL to capture and a list of browsers:</p>
+
+    <pre>
+  $ captureme <strong>--url http://vesln.com</strong> <strong>--browsers ie8,ipad6,iphone7,ff26,chrome30</strong>
+    </pre>
+
+    <p>You can also specify the size of the browsers: </p>
+
+    <pre>
+  $ captureme --url http://vesln.com --browsers ff26 <strong>--size 800x600</strong></pre>
+
+    <p>captureme also works with localhost. It uses the awesome <a href="https://github.com/defunctzombie/localtunnel">localtunnel</a> project that exposes your localhost to the world temporally, so the browsers can open it:</p>
+
+    <pre>
+  $ captureme --url http://localhost:8080/articles/chaijs --browsers ff26</pre>
+
+    <p><em>--url</em> is the url of the page that will be captured</p>
+    <p><em>--size</em> browser size, example: 600x480</p>
+    <p><em>--browsers</em> is a comma separated list with aliases for browsers to be used. See "Available aliases"</p>
+
+
+    <h3 class="doc-heading">Debug</h3>
+
+    <p>If you'd like to see a verbose output of what captureme is doing, you can do so by setting the DEBUG environment varialbe to "captureme:*":</p>
+
+    <pre>
+  $ DEBUG=captureme:* captureme --url http://localhost:8080/ --browsers ff26</pre>
+
+    <p>That will print information that could be useful when debugging problems or if you are curious what is currently going on.</p>
+
+    <h3 class="doc-heading">Available aliases</h3>
+
+    <h3 class="doc-heading">Custom aliases</h3>
+
+    <h3 class="doc-heading">License</h3>
+    <p>MIT License</p>
+
+  </section>
+</div>
+
 </body>
 </html>

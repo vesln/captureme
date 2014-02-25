@@ -1,0 +1,52 @@
+body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  color: #656771;
+  font-style: normal;
+  font-size: 14px;
+  margin: 0;
+  padding: 10px;
+  line-height: 25px;
+}
+
+a {
+  color: #64b13f;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.head {
+  margin-top: 80px;
+  margin-bottom: 150px;
+}
+
+.logo {
+  text-align: center;
+  font-weight: 300;
+  color: #64b13f;
+  font-size: 34px;
+}
+
+.slogan {
+  text-align: center;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.doc-heading {
+  margin-top: 40px;
+  font-size: 22px;
+  color: #000;
+}
+
+em {
+  color: #000;
+}
+
+pre {
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
