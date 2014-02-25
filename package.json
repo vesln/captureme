@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "wd": "~0.2.10",
-    "argvee": "~0.1.1",
     "sherlock": "~1.1.0",
     "batch": "~0.5.0",
-    "localtunnel": "~1.1.0"
+    "localtunnel": "~1.1.0",
+    "optimist": "~0.6.1"
   }
 }

@@ -40,8 +40,6 @@ exports.filePath = function(dir, alias, url) {
  */
 
 exports.parseBrowsers = function(input) {
-  input = (input || [])[0];
-
   return input.split(',').map(function(alias) {
     var entry = config[alias];
     if (!entry) throw new Error('invalid browser alias: ' + alias);

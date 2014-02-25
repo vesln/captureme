@@ -5,7 +5,6 @@
  */
 
 var fs = require('fs');
-var argv = require('argvee')();
 var debug = require('sherlock')('captureme:cli');
 var Batch = require('batch');
 var resolve = require('path').resolve;
@@ -13,6 +12,25 @@ var _ = require('../util');
 var parseUrl = require('../url');
 var Capturer = require('../capturer');
 var env = process.env;
+
+var argv = require('optimist')
+  .usage('Usage: $0 --url [num] --browsers [str]')
+  .demand([ 'url' ])
+  .demand([ 'browsers' ])
+  .options('size', {
+    describe: 'browser resolution, example: 640x200'
+  })
+  .options('save', {
+    describe: 'save path'
+  })
+  .options('browsers', {
+    describe: 'browser list, example: ie6,ff22,chrome26'
+  })
+  .options('url', {
+    describe: 'target'
+  })
+  .default('save', resolve('.'))
+  .argv;
 
 /**
  * Credentials.
@@ -25,14 +43,14 @@ var key = env.SAUCE_ACCESS_KEY;
  * Input.
  */
 
-var originalUrl = (argv.param('url') || [])[0];
-var dest = (argv.param('dest') || [ resolve('.') ])[0];
-var size = (argv.param('size') || [ 'x' ])[0].split('x');
+var originalUrl = argv.url;
+var dest = argv.save;
+var size = (argv.size || 'x').split('x');
 var width = size[0];
 var height = size[1];
 
 try {
-  var browsers = _.parseBrowsers(argv.param('browsers'));
+  var browsers = _.parseBrowsers(argv.browsers);
 } catch(e) {
   _.error(e.message);
 }
