@@ -4,6 +4,7 @@
 
 var config = require('./browsers');
 var path = require('path');
+var config  = require('./config');
 
 /**
  * Print `msg` to stderr and exit.

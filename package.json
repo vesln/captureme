@@ -19,6 +19,7 @@
     "sherlock": "~1.1.0",
     "batch": "~0.5.0",
     "localtunnel": "~1.1.0",
-    "optimist": "~0.6.1"
+    "optimist": "~0.6.1",
+    "homepath": "~1.0.0"
   }
 }
