@@ -28,5 +28,155 @@
     "name": "internet explorer",
     "platform": "Windows 8.1",
     "version": "11"
+  },
+  "ff20": {
+    "name": "firefox",
+    "platform": "Windows 8.1",
+    "version": "20"
+  },
+  "ff21": {
+    "name": "firefox",
+    "platform": "Windows 8.1",
+    "version": "21"
+  },
+  "ff22": {
+    "name": "firefox",
+    "platform": "Windows 8.1",
+    "version": "22"
+  },
+  "ff23": {
+    "name": "firefox",
+    "platform": "Windows 8.1",
+    "version": "23"
+  },
+  "ff24": {
+    "name": "firefox",
+    "platform": "Windows 8.1",
+    "version": "24"
+  },
+  "ff25": {
+    "name": "firefox",
+    "platform": "Windows 8.1",
+    "version": "25"
+  },
+  "ff26": {
+    "name": "firefox",
+    "platform": "Windows 8.1",
+    "version": "26"
+  },
+  "ff27": {
+    "name": "firefox",
+    "platform": "Windows 8.1",
+    "version": "27"
+  },
+  "chrome26": {
+    "name": "chrome",
+    "platform": "Windows 8.1",
+    "version": "26"
+  },
+  "chrome27": {
+    "name": "chrome",
+    "platform": "Windows 8.1",
+    "version": "27"
+  },
+  "chrome28": {
+    "name": "chrome",
+    "platform": "Windows 8.1",
+    "version": "28"
+  },
+  "chrome29": {
+    "name": "chrome",
+    "platform": "Windows 8.1",
+    "version": "29"
+  },
+  "chrome30": {
+    "name": "chrome",
+    "platform": "Windows 8.1",
+    "version": "30"
+  },
+  "chrome31": {
+    "name": "chrome",
+    "platform": "Windows 8.1",
+    "version": "31"
+  },
+  "chrome32": {
+    "name": "chrome",
+    "platform": "Windows 8.1",
+    "version": "32"
+  },
+  "safari5": {
+    "name": "safari",
+    "platform": "OS X 10.6",
+    "version": "5"
+  },
+  "safari6": {
+    "name": "safari",
+    "platform": "OS X 10.8",
+    "version": "6"
+  },
+  "safari7": {
+    "name": "safari",
+    "platform": "OS X 10.9",
+    "version": "7"
+  },
+  "opera11": {
+    "name": "opera",
+    "platform": "Windows 7",
+    "version": "11"
+  },
+  "opera12": {
+    "name": "opera",
+    "platform": "Windows 7",
+    "version": "12"
+  },
+  "iphone5": {
+    "name": "iphone",
+    "platform": "OS X 10.6",
+    "version": "5.0"
+  },
+  "iphone5.1": {
+    "name": "iphone",
+    "platform": "OS X 10.8",
+    "version": "5.1"
+  },
+  "iphone6": {
+    "name": "iphone",
+    "platform": "OS X 10.8",
+    "version": "6.0"
+  },
+  "iphone6.1": {
+    "name": "iphone",
+    "platform": "OS X 10.8",
+    "version": "6.1"
+  },
+  "iphone7": {
+    "name": "iphone",
+    "platform": "OS X 10.9",
+    "version": "7"
+  },
+  "ipad5": {
+    "name": "ipad",
+    "platform": "OS X 10.6",
+    "version": "5.0"
+  },
+  "ipad5.1": {
+    "name": "ipad",
+    "platform": "OS X 10.8",
+    "version": "5.1"
+  },
+  "ipad6": {
+    "name": "ipad",
+    "platform": "OS X 10.8",
+    "version": "6.0"
+  },
+  "ipad6.1": {
+    "name": "ipad",
+    "platform": "OS X 10.8",
+    "version": "6.1"
+  },
+  "ipad7": {
+    "name": "ipad",
+    "platform": "OS X 10.9",
+    "version": "7"
   }
 }
