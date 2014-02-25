@@ -10,6 +10,7 @@ var debug = require('sherlock')('captureme:cli');
 var Batch = require('batch');
 var resolve = require('path').resolve;
 var _ = require('../util');
+var parseUrl = require('../url');
 var Capturer = require('../capturer');
 var env = process.env;
 
@@ -24,7 +25,7 @@ var key = env.SAUCE_ACCESS_KEY;
  * Input.
  */
 
-var url = (argv.param('url') || [])[0];
+var originalUrl = (argv.param('url') || [])[0];
 var dest = (argv.param('dest') || [ resolve('.') ])[0];
 
 try {
@@ -37,11 +38,10 @@ try {
  * Simple input validation.
  */
 
-if (!url) _.error('`--url` is missing');
+if (!originalUrl) _.error('`--url` is missing');
 if (!browsers.length) _.error('`--browsers` is missing');
 
 debug('user: %s', user);
-debug('url: %s', url);
 debug('browsers: %j', browsers);
 
 /**
@@ -50,28 +50,32 @@ debug('browsers: %j', browsers);
 
 var batch = new Batch;
 
-browsers.forEach(function(browser) {
-  batch.push(function(done) {
-    var capturer = new Capturer(user, key, browser);
-    capturer.capture(url, function(err, data) {
-      if (err) return done(err);
-      var filePath = _.filePath(dest, browser.alias, url);
-      debug('store file: %s', filePath);
-      fs.writeFile(filePath, data, 'base64', done);
+parseUrl(originalUrl, function(err, url) {
+  if (err) throw err;
+
+  debug('original url: %s', originalUrl);
+  debug('url: %s', url);
+
+  browsers.forEach(function(browser) {
+    batch.push(function(done) {
+      var capturer = new Capturer(user, key, browser);
+      capturer.capture(url, function(err, data) {
+        if (err) return done(err);
+
+        var filePath = _.filePath(dest, browser.alias, originalUrl);
+        debug('store file: %s', filePath);
+        fs.writeFile(filePath, data, 'base64', done);
+      });
     });
   });
-});
 
-batch.on('progress', function(e) {
-  debug('progress: ' + e.percent + '%');
-});
+  batch.on('progress', function(e) {
+    debug('progress: ' + e.percent + '%');
+  });
 
-/**
- * Done.
- */
-
-batch.end(function(err) {
-  debug('done');
-  if (err) throw err;
-  process.exit(0);
+  batch.end(function(err) {
+    debug('done');
+    if (err) throw err;
+    process.exit(0);
+  });
 });
