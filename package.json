@@ -8,17 +8,16 @@
   "main": "./index.js",
   "homepage": "https://github.com/vesln/captureme",
   "bin": {
-    "captureme": "./bin/captureme",
-  },
-  "scripts": {
-    "test": "make test"
+    "captureme": "./bin/captureme"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/vesln/captureme"
   },
-  "devDependencies": {},
   "dependencies": {
-    "wd": "~0.2.10"
+    "wd": "~0.2.10",
+    "argvee": "~0.1.1",
+    "sherlock": "~1.1.0",
+    "batch": "~0.5.0"
   }
 }
