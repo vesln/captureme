@@ -28,25 +28,39 @@ function Capturer(user, key, browser) {
  * @api public
  */
 
-Capturer.prototype.capture = function(url, fn) {
+Capturer.prototype.capture = function(opts, fn) {
   var driver = this.driver();
 
-  var opts = {
+  var driverOptions = {
     browserName: this.browser.name,
     platform: this.browser.platform,
     version: this.browser.version
   };
 
+  function takeScreenshot() {
+    debug('take screenshot');
+    driver.takeScreenshot(fn);
+  }
+
+  function resize(width, height, fn) {
+    debug('resize %sx%s', width, height);
+    driver.setWindowSize(+width, +height, fn);
+  }
+
   debug('init %s', this.browser.alias);
-  driver.init(opts, function(err) {
+  driver.init(driverOptions, function(err) {
     if (err) return fn(err);
 
-    debug('GET %s', url);
-    driver.get(url, function(err) {
-      if (err) return fn(err);
+    debug('GET %s', opts.url);
 
-      debug('take screenshot');
-      driver.takeScreenshot(fn);
+    driver.get(opts.url, function(err) {
+      if (err) return fn(err);
+      if (!opts.width && !opts.height) return takeScreenshot();
+
+      resize(opts.width, opts.height, function(err) {
+        if (err) return fn(err);
+        takeScreenshot();
+      });
     });
   });
 };
