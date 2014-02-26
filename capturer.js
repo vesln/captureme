@@ -39,7 +39,11 @@ Capturer.prototype.capture = function(opts, fn) {
 
   function takeScreenshot() {
     debug('take screenshot');
-    driver.takeScreenshot(fn);
+    driver.takeScreenshot(function(err) {
+      driver.quit(function() {
+        fn(err);
+      });
+    });
   }
 
   function resize(width, height, fn) {
