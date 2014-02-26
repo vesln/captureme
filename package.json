@@ -1,6 +1,6 @@
 {
   "name": "captureme",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "preferGlobal": true,
   "description": "CLI utility that helps you capture screenshots from any browser available in the cloud",
   "author": "Veselin Todorov <hi@vesln.com>",
